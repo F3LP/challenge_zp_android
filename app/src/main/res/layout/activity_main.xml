@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_zap"
     android:paddingBottom="16dp"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:id="@+id/logo_grupo_zap"

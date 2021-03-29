@@ -11,7 +11,7 @@ class RealEstateViewModel(private val repository: RealEstateRepositoryImpl) : Vi
     val result: LiveData<RealEstate>
         get() = _result
 
-//    fun fetchForecast() {
+//    fun fetchRealEstate() {
 //        if (_result.value == null) {
 //            viewModelScope.launch {
 //                repository.getAllRealEstate().collect {

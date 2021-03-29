@@ -1,10 +1,9 @@
-package com.estudos.challenge_zap2
+package com.estudos.challenge_zap2.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
-import com.estudos.challenge_zap.model.RealEstate
+import com.estudos.challenge_zap2.RealEstateRepositoryImpl
 import com.estudos.challenge_zap2.databinding.ActivityMainBinding
 import com.estudos.challenge_zap2.viewmodel.RealEstateViewModel
 
@@ -18,9 +17,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = RealEstateRepositoryImpl().getAllRealEstate()
+        val repository = RealEstateRepositoryImpl()
+        repository.getAllRealEstate()
 
-        println("################################## " + repository)
+       println("################################## + ${repository.getAllRealEstate()}")
 
 
         binding.buttonVivaReal.setOnClickListener { filterVivaReal() }

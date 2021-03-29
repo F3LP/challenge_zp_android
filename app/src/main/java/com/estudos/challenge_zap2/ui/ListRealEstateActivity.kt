@@ -1,10 +1,11 @@
-package com.estudos.challenge_zap2
+package com.estudos.challenge_zap2.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.estudos.challenge_zap.model.RealEstate
+import com.estudos.challenge_zap2.RealEstateAdapter
 import com.estudos.challenge_zap2.databinding.ListRealestateBinding
 import com.estudos.challenge_zap2.retrofit.RealEstateService
 import com.estudos.challenge_zap2.retrofit.RetrofitClient
