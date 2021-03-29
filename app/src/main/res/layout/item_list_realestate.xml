@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:elevation="100dp"
+        app:cardCornerRadius="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_item_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/text_apartment_or_house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="33dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_item_main"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Apartamento para Aluguel" />
+
+            <TextView
+                android:id="@+id/text_bedrooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/div_1"
+                app:layout_constraintStart_toEndOf="@id/img_item_main"
+                app:layout_constraintTop_toBottomOf="@id/text_apartment_or_house"
+                tools:text="1 quarto" />
+
+            <ImageView
+                android:id="@+id/div_1"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/color_div"
+                app:layout_constraintBottom_toBottomOf="@id/text_bedrooms"
+                app:layout_constraintEnd_toStartOf="@id/text_bathrooms"
+                app:layout_constraintStart_toEndOf="@id/text_bedrooms"
+                app:layout_constraintTop_toTopOf="@id/text_bedrooms" />
+
+            <TextView
+                android:id="@+id/text_bathrooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/div_2"
+                app:layout_constraintStart_toEndOf="@id/div_1"
+                app:layout_constraintTop_toBottomOf="@id/text_apartment_or_house"
+                tools:text="1 banheiro" />
+
+            <ImageView
+                android:id="@+id/div_2"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/color_div"
+                app:layout_constraintBottom_toBottomOf="@id/text_bathrooms"
+                app:layout_constraintEnd_toStartOf="@id/text_area"
+                app:layout_constraintStart_toEndOf="@id/text_bathrooms"
+                app:layout_constraintTop_toTopOf="@id/text_bathrooms" />
+
+            <TextView
+                android:id="@+id/text_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toStartOf="@id/div_3"
+                app:layout_constraintStart_toEndOf="@id/div_2"
+                app:layout_constraintTop_toBottomOf="@id/text_apartment_or_house"
+                tools:text="28 m2" />
+
+            <ImageView
+                android:id="@+id/div_3"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/color_div"
+                app:layout_constraintBottom_toBottomOf="@id/text_area"
+                app:layout_constraintEnd_toStartOf="@id/text_parking_spaces"
+                app:layout_constraintStart_toEndOf="@id/text_area"
+                app:layout_constraintTop_toTopOf="@id/text_area" />
+
+            <TextView
+                android:id="@+id/text_parking_spaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/div_3"
+                app:layout_constraintTop_toBottomOf="@id/text_apartment_or_house"
+                tools:text="1 vaga" />
+
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@id/img_item_main"
+                app:layout_constraintTop_toBottomOf="@id/text_bedrooms"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Valor: R$ 2900/mês" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
