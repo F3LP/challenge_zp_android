@@ -7,19 +7,16 @@ import com.estudos.challenge_zap.model.RealEstate
 import com.estudos.challenge_zap2.RealEstateRepositoryImpl
 
 class RealEstateViewModel(private val repository: RealEstateRepositoryImpl) : ViewModel() {
-    private val _result = MutableLiveData<RealEstate>()
-    val result: LiveData<RealEstate>
+
+    private var _result = MutableLiveData<List<RealEstate>>()
+
+    val result: LiveData<List<RealEstate>>
         get() = _result
 
-//    fun fetchRealEstate() {
-//        if (_result.value == null) {
-//            viewModelScope.launch {
-//                repository.getAllRealEstate().collect {
-//                    _result.postValue(it)
-//                }
-//            }
-//
-//        }
-//    }
+    fun getRealEstate(): MutableLiveData<List<RealEstate>> {
+        _result = repository.getAllRealEstate()
+        return _result
+    }
 
 }
+

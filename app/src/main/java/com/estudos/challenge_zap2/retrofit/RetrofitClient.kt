@@ -11,7 +11,6 @@ class RetrofitClient private constructor() {
         private lateinit var  retrofit: Retrofit
         private val baseUrl = "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/"
 
-
         private fun getRetrofitInstance(): Retrofit {
 
             val httpClient = OkHttpClient.Builder()
