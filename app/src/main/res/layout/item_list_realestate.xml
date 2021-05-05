@@ -3,30 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="260dp"
+    android:clickable="true"
     android:foreground="?selectableItemBackground"
-    android:clickable="true">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="12dp" >
+        app:cardElevation="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
-            <com.synnapps.carouselview.CarouselView
-                android:id="@+id/carousel_view"
+            <ImageView
+                android:id="@+id/image_main"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@id/text_apartment_or_house"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/text_apartment_or_house"/>
+                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/text_apartment_or_house"
@@ -37,7 +39,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/carousel_view"
+                app:layout_constraintTop_toBottomOf="@id/image_main"
                 tools:text="Apartamento para Aluguel" />
 
             <TextView
@@ -66,8 +68,8 @@
                 android:id="@+id/text_bathrooms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@id/div_2"
                 app:layout_constraintStart_toEndOf="@id/div_1"
@@ -80,16 +82,16 @@
                 android:layout_height="0dp"
                 android:background="@color/color_div"
                 app:layout_constraintBottom_toBottomOf="@id/text_bathrooms"
-                app:layout_constraintEnd_toStartOf="@id/text_area"
+                app:layout_constraintEnd_toStartOf="@id/text_usablearea"
                 app:layout_constraintStart_toEndOf="@id/text_bathrooms"
                 app:layout_constraintTop_toTopOf="@id/text_bathrooms" />
 
             <TextView
-                android:id="@+id/text_area"
+                android:id="@+id/text_usablearea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@id/div_3"
                 app:layout_constraintStart_toEndOf="@id/div_2"
@@ -101,17 +103,17 @@
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:background="@color/color_div"
-                app:layout_constraintBottom_toBottomOf="@id/text_area"
+                app:layout_constraintBottom_toBottomOf="@id/text_usablearea"
                 app:layout_constraintEnd_toStartOf="@id/text_parking_spaces"
-                app:layout_constraintStart_toEndOf="@id/text_area"
-                app:layout_constraintTop_toTopOf="@id/text_area" />
+                app:layout_constraintStart_toEndOf="@id/text_usablearea"
+                app:layout_constraintTop_toTopOf="@id/text_usablearea" />
 
             <TextView
                 android:id="@+id/text_parking_spaces"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/div_3"
                 app:layout_constraintTop_toBottomOf="@id/text_apartment_or_house"

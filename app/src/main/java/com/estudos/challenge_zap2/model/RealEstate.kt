@@ -1,8 +1,11 @@
 package com.estudos.challenge_zap.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class RealEstate(
     @SerializedName("address")
     val address: Address,
@@ -30,4 +33,4 @@ data class RealEstate(
     val updatedAt: String,
     @SerializedName("usableAreas")
     val usableAreas: Int
-)
+): Parcelable

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">challenge-zap2</string>
+    <string name="usable_area">%d m²</string>
+    <string name="price">R$ %s</string>
+    <string name="business_type_sale">Apartamento para Venda</string>
+    <string name="business_type_rental">Apartamento para Aluguel</string>
+    <string name="rent">Aluguel</string>
+    <string name="sale">Venda</string>
+
+
+    <plurals name="bathroom">
+        <item quantity="one">%d banheiro</item>
+        <item quantity="other">%d banheiros</item>
+    </plurals>
+    <plurals name="bedroom">
+        <item quantity="one">%d quarto</item>
+        <item quantity="other">%d quartos</item>
+    </plurals>
+    <plurals name="parking_spaces">
+        <item quantity="one">%d vaga</item>
+        <item quantity="other">%d vagas</item>
+    </plurals>
 </resources>

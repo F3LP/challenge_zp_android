@@ -1,10 +1,17 @@
-package com.estudos.challenge_zap2.retrofit
+package com.estudos.challenge_zap2.api
 
-import okhttp3.OkHttpClient
+import com.estudos.challenge_zap.model.RealEstate
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 
-class RetrofitClient private constructor() {
+interface RealEstateService {
+
+    @GET("sources/source-1.json")
+    fun listRealEstate(): Call<List<RealEstate>>
+
+    //coroutine
 
     companion object {
 
@@ -13,12 +20,11 @@ class RetrofitClient private constructor() {
 
         private fun getRetrofitInstance(): Retrofit {
 
-            val httpClient = OkHttpClient.Builder()
+            // service locator
 
             if(!Companion::retrofit.isInitialized) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
-                    .client(httpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
@@ -29,4 +35,5 @@ class RetrofitClient private constructor() {
             return getRetrofitInstance().create(serviceClass)
         }
     }
+
 }

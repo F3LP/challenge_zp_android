@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.estudos.challenge_zap.model.RealEstate
 import com.estudos.challenge_zap2.R
 import com.squareup.picasso.Picasso
-import com.synnapps.carouselview.CarouselView
-import com.synnapps.carouselview.ImageListener
+import kotlinx.android.synthetic.main.item_list_realestate.view.*
 
-class RealEstateAdapter : RecyclerView.Adapter<RealEstateAdapter.RealStateViewHolder>() {
-
-    var realEstate = mutableListOf<RealEstate>()
+class RealEstateAdapter(
+    private val realEstateList: MutableList<RealEstate>,
+    private val listener: OnItemClickListener
+) : RecyclerView.Adapter<RealEstateAdapter.RealStateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RealStateViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,53 +23,67 @@ class RealEstateAdapter : RecyclerView.Adapter<RealEstateAdapter.RealStateViewHo
     }
 
     override fun onBindViewHolder(holder: RealStateViewHolder, position: Int) {
-        val realEstate = realEstate[position]
+        val realEstate = realEstateList[position]
 
-        var imageListener: ImageListener = object : ImageListener {
-            override fun setImageForPosition(position: Int, imageView: ImageView) {
-                Picasso.get().load(realEstate.images[position]).into(imageView)
-            }
-        }
-        holder.carousel.pageCount = realEstate.images.size
-        holder.carousel.setImageListener(imageListener)
-        holder.bathroom.text =
-            "${realEstate.bathrooms} ${if (realEstate.bathrooms < 2) "banheiro" else "banheiros"}"
-        holder.bedroom.text =
-            "${realEstate.bedrooms} ${if (realEstate.bedrooms < 2) "quarto" else "quartos"}"
-        holder.usableAreas.text = "${realEstate.usableAreas} m2"
-        holder.parkingSpaces.text =
-            "${realEstate.parkingSpaces} ${if (realEstate.parkingSpaces < 2) "vaga" else "vagas"}"
+        Picasso.get().load(realEstateList.get(position).images[0]).into(holder.image_main)
+        holder.bathroom.text = holder.bathroom.resources.getQuantityString(
+            R.plurals.bathroom,
+            realEstate.bathrooms,
+            realEstate.bathrooms
+        )
+        holder.bedroom.text = holder.bedroom.resources.getQuantityString(
+            R.plurals.bedroom,
+            realEstate.bedrooms,
+            realEstate.bedrooms
+        )
+        holder.parkingSpaces.text = holder.parkingSpaces.resources.getQuantityString(
+            R.plurals.parking_spaces,
+            realEstate.parkingSpaces,
+            realEstate.parkingSpaces
+        )
+        holder.usableAreas.text =
+            holder.usableAreas.resources.getString(R.string.usable_area, realEstate.usableAreas)
+        holder.price.text =
+            holder.price.resources.getString(R.string.price, realEstate.pricingInfos.price)
         holder.businessType.text =
-            "Apartmento para ${if (realEstate.pricingInfos.businessType == "SALE") "Venda" else "Aluguel"}"
-        holder.price.text = "R$ ${realEstate.pricingInfos.price}"
+            if (realEstate.pricingInfos.businessType == "SALE")
+                holder.businessType.resources.getString(R.string.business_type_sale)
+            else
+                holder.businessType.resources.getString(R.string.business_type_rental)
     }
 
-    override fun getItemCount() = realEstate.size
+    override fun getItemCount() = realEstateList.size
 
     fun updateRealState(realEstate: List<RealEstate>) {
-        this.realEstate.clear()
-        this.realEstate.addAll(realEstate)
+        this.realEstateList.clear()
+        this.realEstateList.addAll(realEstate)
         notifyDataSetChanged()
     }
 
-    class RealStateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val carousel: CarouselView
-        val bathroom: TextView
-        val bedroom: TextView
-        val usableAreas: TextView
-        val parkingSpaces: TextView
-        val businessType: TextView
-        val price: TextView
+    inner class RealStateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+        val image_main: ImageView = itemView.image_main
+        val bathroom: TextView = itemView.text_bathrooms
+        val bedroom: TextView = itemView.text_bedrooms
+        val usableAreas: TextView = itemView.text_usablearea
+        val parkingSpaces: TextView = itemView.text_parking_spaces
+        val businessType: TextView = itemView.text_apartment_or_house
+        val price: TextView = itemView.price
 
         init {
-            carousel = itemView.findViewById(R.id.carousel_view)
-            bathroom = itemView.findViewById(R.id.text_bathrooms)
-            bedroom = itemView.findViewById(R.id.text_bedrooms)
-            usableAreas = itemView.findViewById(R.id.text_area)
-            parkingSpaces = itemView.findViewById(R.id.text_parking_spaces)
-            businessType = itemView.findViewById(R.id.text_apartment_or_house)
-            price = itemView.findViewById(R.id.price)
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
         }
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }
+

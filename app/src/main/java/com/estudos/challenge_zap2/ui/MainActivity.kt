@@ -2,6 +2,7 @@ package com.estudos.challenge_zap2.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.estudos.challenge_zap2.databinding.ActivityMainBinding
 
@@ -14,8 +15,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonVivaReal.setOnClickListener { filterVivaReal() }
-        binding.buttonZap.setOnClickListener { filterZap() }
+        Handler().postDelayed({
+            filterVivaReal()
+            finish()
+        }, 1200)
 
     }
 
